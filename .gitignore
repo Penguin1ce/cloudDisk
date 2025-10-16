@@ -1,0 +1,66 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Node (if you have frontend)
+node_modules/
+
+# Go binaries and build outputs
+/bin/
+/build/
+/out/
+pkg/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Go test/coverage/profiles
+coverage.out
+*.cover
+*.prof
+
+# Vendor (uncomment if you do NOT commit vendor/)
+# /vendor/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+tmp/
+*.pid
+
+# Environment / secrets
+.env
+.env.*
+*.key
+*.pem
+*.crt
+credentials
+aws_credentials
+
+# Docker / Compose
+docker-compose.override.yml
+
+# IDEs / editors
+.vscode/
+.idea/
+*.iml
+*.sublime-*
+*.code-workspace
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Misc
+npm-debug.log
+yarn-error.log
+
+core/define/define.go

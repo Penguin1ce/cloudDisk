@@ -1,0 +1,10 @@
+Name: core-api
+Host: 0.0.0.0
+Port: 8080
+
+MySQL:
+  Datasource: root:123456@/cloud-disk?charset=utf8mb4&parseTime=True&loc=Local
+
+Redis:
+  Address: localhost:6379
+  
