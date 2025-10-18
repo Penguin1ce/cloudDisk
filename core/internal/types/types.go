@@ -7,6 +7,20 @@ type CommonResponse struct {
 	Message string `json:"message"`
 }
 
+type FileUploadRequest struct {
+	Hash string `json:"hash,optional"`
+	Name string `json:"name,optional"`
+	Ext  string `json:"ext,optional"`
+	Size int64  `json:"size,optional"`
+	Path string `json:"path,optional"`
+}
+
+type FileUploadResponse struct {
+	Identity string `json:"identity"`
+	Name     string `json:"name"`
+	Ext      string `json:"ext"`
+}
+
 type LoginRequest struct {
 	Name     string `json:"name"`
 	Password string `json:"password"`
@@ -38,4 +52,14 @@ type UserRegisterRequest struct {
 	Password string `json:"password"`
 	Email    string `json:"email"`
 	Code     string `json:"code"`
+}
+
+type UserRepositoryRequest struct {
+	ParentId           int64  `json:"parentId"`
+	RepositoryIdentity string `json:"repositoryIdentity"`
+	Name               string `json:"name"`
+	Ext                string `json:"ext"`
+}
+
+type UserRepositoryResponse struct {
 }

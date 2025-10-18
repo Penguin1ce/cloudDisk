@@ -18,6 +18,41 @@ service core-api {
 	post /user/register (UserRegisterRequest) returns (CommonResponse)
 }
 
+@server (
+	middleware: Auth
+)
+service core-api {
+	// 上传文件
+	@handler FileUpload
+	post /file/upload (FileUploadRequest) returns (FileUploadResponse)
+
+	@handler UserRepositorySave
+	post /file/repository/save (UserRepositoryRequest) returns (UserRepositoryResponse)
+}
+
+type UserRepositoryRequest {
+	ParentId           int64  `json:"parentId"`
+	RepositoryIdentity string `json:"repositoryIdentity"`
+	Name               string `json:"name"`
+	Ext                string `json:"ext"`
+}
+
+type UserRepositoryResponse {}
+
+type FileUploadRequest {
+	Hash string `json:"hash,optional"`
+	Name string `json:"name,optional"`
+	Ext  string `json:"ext,optional"`
+	Size int64  `json:"size,optional"`
+	Path string `json:"path,optional"`
+}
+
+type FileUploadResponse {
+	Identity string `json:"identity"`
+	Name     string `json:"name"`
+	Ext      string `json:"ext"`
+}
+
 type CommonResponse {
 	Message string `json:"message"`
 }

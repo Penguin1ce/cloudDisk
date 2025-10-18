@@ -9,36 +9,11 @@ import (
 	"net/smtp"
 	"time"
 
-	"github.com/golang-jwt/jwt/v4"
 	"github.com/jordan-wright/email"
 )
 
 func Md5(str string) string {
 	return fmt.Sprintf("%x", md5.Sum([]byte(str)))
-}
-
-func GenerateToken(id int, identity, name string) (string, error) {
-	// id
-	// identity
-	// name
-	now := time.Now()
-	uc := define.UserClaims{
-		Id:       id,
-		Identity: identity,
-		Name:     name,
-		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(now.Add(240 * time.Hour)), // 令牌 240 小时后过期
-			IssuedAt:  jwt.NewNumericDate(now),
-			NotBefore: jwt.NewNumericDate(now),
-			Subject:   identity,
-		},
-	}
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, uc)
-	signedString, err := token.SignedString([]byte(define.JWTSecret))
-	if err != nil {
-		return "", err
-	}
-	return signedString, nil
 }
 
 func MailSendCode(mail string, code string) error {
