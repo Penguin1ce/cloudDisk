@@ -47,6 +47,27 @@ type UserDetailResponse struct {
 	Email string `json:"email"`
 }
 
+type UserFile struct {
+	Id                 int64  `json:"id"`
+	Identity           string `json:"identity"`
+	Name               string `json:"name"`
+	Size               int64  `json:"size"`
+	RepositoryIdentity string `json:"repositoryIdentity"`
+	Ext                string `json:"ext"`
+	Path               string `json:"path"`
+}
+
+type UserFileListRequest struct {
+	Id   int64 `json:"id,optional"`
+	Page int   `json:"page,optional"`
+	Size int   `json:"size,optional"`
+}
+
+type UserFileListResponse struct {
+	Count int64       `json:"count"`
+	List  []*UserFile `json:"list"`
+}
+
 type UserRegisterRequest struct {
 	Name     string `json:"name"`
 	Password string `json:"password"`

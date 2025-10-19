@@ -26,8 +26,34 @@ service core-api {
 	@handler FileUpload
 	post /file/upload (FileUploadRequest) returns (FileUploadResponse)
 
+	// 用户存储关联
 	@handler UserRepositorySave
 	post /file/repository/save (UserRepositoryRequest) returns (UserRepositoryResponse)
+
+	// 用户文件列表
+	@handler UserFileList
+	get /user/file/list (UserFileListRequest) returns (UserFileListResponse)
+}
+
+type UserFileListRequest {
+	Id   int64 `json:"id,optional"`
+	Page int   `json:"page,optional"`
+	Size int   `json:"size,optional"`
+}
+
+type UserFileListResponse {
+	Count int64       `json:"count"`
+	List  []*UserFile `json:"list"`
+}
+
+type UserFile {
+	Id                 int64  `json:"id"`
+	Identity           string `json:"identity"`
+	Name               string `json:"name"`
+	Size               int64  `json:"size"`
+	RepositoryIdentity string `json:"repositoryIdentity"`
+	Ext                string `json:"ext"`
+	Path               string `json:"path"`
 }
 
 type UserRepositoryRequest {
