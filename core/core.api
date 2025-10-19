@@ -33,6 +33,15 @@ service core-api {
 	// 用户文件列表
 	@handler UserFileList
 	get /user/file/list (UserFileListRequest) returns (UserFileListResponse)
+
+	// 用户文件名称修改
+	@handler UserFileRename
+	post /user/file/rename (UserFileRenameRequest) returns (CommonResponse)
+}
+
+type UserFileRenameRequest {
+	Identity string `json:"identity"`
+	Name     string `json:"name"`
 }
 
 type UserFileListRequest {

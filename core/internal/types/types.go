@@ -68,6 +68,11 @@ type UserFileListResponse struct {
 	List  []*UserFile `json:"list"`
 }
 
+type UserFileRenameRequest struct {
+	Identity string `json:"identity"`
+	Name     string `json:"name"`
+}
+
 type UserRegisterRequest struct {
 	Name     string `json:"name"`
 	Password string `json:"password"`
