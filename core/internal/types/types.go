@@ -73,6 +73,15 @@ type UserFileRenameRequest struct {
 	Name     string `json:"name"`
 }
 
+type UserFolderCreateRequest struct {
+	ParentId int64  `json:"parentId"`
+	Name     string `json:"name"`
+}
+
+type UserFolderCreateResponse struct {
+	Identity string `json:"identity"`
+}
+
 type UserRegisterRequest struct {
 	Name     string `json:"name"`
 	Password string `json:"password"`

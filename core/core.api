@@ -37,6 +37,19 @@ service core-api {
 	// 用户文件名称修改
 	@handler UserFileRename
 	post /user/file/rename (UserFileRenameRequest) returns (CommonResponse)
+
+	// 用户文件夹创建
+	@handler UserFolderCreate
+	post /user/folder/create (UserFolderCreateRequest) returns (UserFolderCreateResponse)
+}
+
+type UserFolderCreateRequest {
+	ParentId int64  `json:"parentId"`
+	Name     string `json:"name"`
+}
+
+type UserFolderCreateResponse {
+	Identity string `json:"identity"`
 }
 
 type UserFileRenameRequest {

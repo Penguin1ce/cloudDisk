@@ -61,6 +61,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 					Path:    "/user/file/rename",
 					Handler: UserFileRenameHandler(serverCtx),
 				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/user/folder/create",
+					Handler: UserFolderCreateHandler(serverCtx),
+				},
 			}...,
 		),
 	)
